@@ -1,4 +1,6 @@
 const allplayers = () => {
+    document.getElementById("player-container").innerHTML = "";
+ 
     const searchValue = document.getElementById("search-box").value;
 
     const url = `https://www.thesportsdb.com/api/v1/json/2/searchplayers.php?p=${searchValue}
@@ -32,7 +34,7 @@ const showPlayersDetails = (players) => {
     </div>
     `;
     parent.appendChild(div);
-    }
+    };
   
 }
 
@@ -48,7 +50,17 @@ const details = (playerId) => {
 };
 
 const setPlayerDetails = (info) => {
+    console.log(info.strGender);
 
+    if (info.strGender == "Male") {
+        document.getElementById("male").style.display = "block";
+        document.getElementById("female").style.display = "none";
+    }
+    else {
+        document.getElementById("male").style.display = "none";
+        document.getElementById("female").style.display = "block";
+    }
+   
    document.getElementById("details-container").innerHTML = `
    <div class="card border p-5 m-2">
       <div>
@@ -58,4 +70,4 @@ const setPlayerDetails = (info) => {
       <a href="">${info.strInstagram}</a> 
     </div>
    `;
-}
+};
