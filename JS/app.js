@@ -44,5 +44,18 @@ const details = (playerId) => {
     `;
     fetch(url)
       .then((response) => response.json())
-      .then ((data) => console.log(data));
+      .then ((data) => setPlayerDetails(data.players[0]));
 };
+
+const setPlayerDetails = (info) => {
+
+   document.getElementById("details-container").innerHTML = `
+   <div class="card border p-5 m-2">
+      <div>
+          <img class="w-25" src="${info.strThumb}" alt="">
+      </div>
+      <h2>Name:${info.strPlayer}</h2>
+      <a href="">${info.strInstagram}</a> 
+    </div>
+   `;
+}
